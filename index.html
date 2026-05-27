@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora de Magnitudes Físicas — Samuel David Rodriguez Rodriguez</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;600&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- CURSOR PERSONALIZADO -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursor-trail"></div>
+
+  <!-- FONDO ANIMADO -->
+  <canvas class="bg-canvas" id="bg-canvas"></canvas>
+
+  <!-- BARRA LATERAL FIJA -->
+  <nav class="side-nav" id="side-nav">
+    <div class="side-nav-line"></div>
+    <ul>
+      <li><a href="#sec-velocidad"    data-label="01">VEL</a></li>
+      <li><a href="#sec-aceleracion"  data-label="02">ACE</a></li>
+      <li><a href="#sec-fuerza"       data-label="03">FZA</a></li>
+      <li><a href="#sec-trabajo"      data-label="04">TRB</a></li>
+      <li><a href="#sec-cinetica"     data-label="05">ECN</a></li>
+      <li><a href="#sec-potencial"    data-label="06">EPG</a></li>
+      <li><a href="#sec-densidad"     data-label="07">DEN</a></li>
+      <li><a href="#sec-presion"      data-label="08">PRE</a></li>
+      <li><a href="#sec-carga"        data-label="09">CAR</a></li>
+      <li><a href="#sec-ohm"          data-label="10">OHM</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-noise"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow reveal-line">Samuel David Rodriguez Rodriguez</p>
+      <h1 class="hero-title">
+        <span class="hero-title-line reveal-line" style="--d:0.1s">Calculadora de</span>
+        <span class="hero-title-line italic reveal-line" style="--d:0.25s">Magnitudes Físicas</span>
+      </h1>
+      <p class="hero-desc reveal-line" style="--d:0.4s">
+        Diez calculadoras para las leyes que gobiernan el universo.
+      </p>
+      <div class="hero-meta reveal-line" style="--d:0.55s">
+        <span>Velocidad</span>
+        <span class="dot"></span>
+        <span>Fuerza</span>
+        <span class="dot"></span>
+        <span>Energía</span>
+        <span class="dot"></span>
+        <span>Electricidad</span>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-bar"></div>
+      <span>scroll</span>
+    </div>
+  </header>
+
+  <!-- SECCIONES LINEALES -->
+  <main class="sections">
+
+    <!-- 01 VELOCIDAD -->
+    <section class="calc-section" id="sec-velocidad">
+      <div class="section-index">01</div>
+      <div class="section-inner">
+        <div class="section-meta">
+          <h2 class="section-title">¿Con qué rapidez se desplaza un objeto?</h2>
+          <p class="section-desc">La velocidad relaciona la distancia recorrida con el tiempo empleado. A mayor distancia en menos tiempo, mayor velocidad.</p>
+          <div class="formula-display">
+            <span class="formula-var accent">v</span>
+            <span class="formula-eq">=</span>
+            <div class="formula-fraction">
+              <span class="formula-var">d</span>
+              <span class="formula-bar"></span>
+              <span class="formula-var">t</span>
+            </div>
+          </div>
+          <div class="units-row">
+            <div class="unit-tag">d <span>distancia · m</span></div>
+            <div class="unit-tag">t <span>tiempo · s</span></div>
+            <div class="unit-tag result-unit">v <span>velocidad · m/s</span></div>
+          </div>
+        </div>
+        <div class="section-calc">
+          <div class="field">
+            <label for="vel-d">Distancia <em>d</em></label>
+            <div class="input-wrap">
+              <input type="number" id="vel-d" placeholder="metros" step="any"/>
+              <span class="input-unit">m</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="vel-t">Tiempo <em>t</em></label>
+            <div class="input-wrap">
+              <input type="number" id="vel-t" placeholder="segundos" step="any"/>
+              <span class="input-unit">s</span>
+            </div>
+          </div>
+          <button class="btn-run" onclick="calcVelocidad()">
+            <span class="btn-text">Calcular velocidad</span>
+            <span class="btn-arrow">→</span>
+          </button>
+          <div class="result-zone" id="res-velocidad"></div>
+        </div>
+      </div>
+      <div class="section-divider"></div>
+    </section>
+
+    <!-- 02 ACELERACIÓN -->
+    <section class="calc-section" id="sec-aceleracion">
+      <div class="section-index">02</div>
+      <div class="section-inner">
+        <div class="section-meta">
+          <h2 class="section-title">¿Qué tan rápido cambia la velocidad?</h2>
+          <p class="section-desc">La aceleración mide cómo varía la velocidad de un cuerpo con el paso del tiempo. Puede ser positiva (acelera) o negativa (frena).</p>
+          <div class="formula-display">
+            <span class="formula-var accent">a</span>
+            <span class="formula-eq">=</span>
+            <div class="formula-fraction">
+              <span class="formula-var">Δv</span>
+              <span class="formula-bar"></span>
+              <span class="formula-var">Δt</span>
+            </div>
+          </div>
+          <div class="units-row">
+            <div class="unit-tag">Δv <span>cambio velocidad · m/s</span></div>
+            <div class="unit-tag">Δt <span>cambio tiempo · s</span></div>
+            <div class="unit-tag result-unit">a <span>aceleración · m/s²</span></div>
+          </div>
+        </div>
+        <div class="section-calc">
+          <div class="field">
+            <label for="acel-dv">Cambio de velocidad <em>Δv</em></label>
+            <div class="input-wrap">
+              <input type="number" id="acel-dv" placeholder="m/s" step="any"/>
+              <span class="input-unit">m/s</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="acel-dt">Intervalo de tiempo <em>Δt</em></label>
+            <div class="input-wrap">
+              <input type="number" id="acel-dt" placeholder="segundos" step="any"/>
+              <span class="input-unit">s</span>
+            </div>
+          </div>
+          <button class="btn-run" onclick="calcAceleracion()">
+            <span class="btn-text">Calcular aceleración</span>
+            <span class="btn-arrow">→</span>
+          </button>
+          <div class="result-zone" id="res-aceleracion"></div>
+        </div>
+      </div>
+      <div class="section-divider"></div>
+    </section>
+
+    <!-- 03 FUERZA -->
+    <section class="calc-section" id="sec-fuerza">
+      <div class="section-index">03</div>
+      <div class="section-inner">
+        <div class="section-meta">
+          <h2 class="section-title">¿Cuánta fuerza actúa sobre un cuerpo?</h2>
+          <p class="section-desc">Segunda Ley de Newton: la fuerza neta sobre un objeto es el producto de su masa y la aceleración que experimenta.</p>
+          <div class="formula-display">
+            <span class="formula-var accent">F</span>
+            <span class="formula-eq">=</span>
+            <span class="formula-var">m</span>
+            <span class="formula-op">·</span>
+            <span class="formula-var">a</span>
+          </div>
+          <div class="units-row">
+            <div class="unit-tag">m <span>masa · kg</span></div>
+            <div class="unit-tag">a <span>aceleración · m/s²</span></div>
+            <div class="unit-tag result-unit">F <span>fuerza · N</span></div>
+          </div>
+        </div>
+        <div class="section-calc">
+          <div class="field">
+            <label for="fza-m">Masa <em>m</em></label>
+            <div class="input-wrap">
+              <input type="number" id="fza-m" placeholder="kilogramos" step="any"/>
+              <span class="input-unit">kg</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="fza-a">Aceleración <em>a</em></label>
+            <div class="input-wrap">
+              <input type="number" id="fza-a" placeholder="m/s²" step="any"/>
+              <span class="input-unit">m/s²</span>
+            </div>
+          </div>
+          <button class="btn-run" onclick="calcFuerza()">
+            <span class="btn-text">Calcular fuerza</span>
+            <span class="btn-arrow">→</span>
+          </button>
+          <div class="result-zone" id="res-fuerza"></div>
+        </div>
+      </div>
+      <div class="section-divider"></div>
+    </section>
+
+    <!-- 04 TRABAJO -->
+    <section class="calc-section" id="sec-trabajo">
+      <div class="section-index">04</div>
+      <div class="section-inner">
+        <div class="section-meta">
+          <h2 class="section-title">¿Cuánta energía transfiere una fuerza al mover un objeto?</h2>
+          <p class="section-desc">El trabajo mecánico depende de la magnitud de la fuerza, la distancia desplazada y el ángulo entre ambos vectores.</p>
+          <div class="formula-display">
+            <span class="formula-var accent">W</span>
+            <span class="formula-eq">=</span>
+            <span class="formula-var">F</span>
+            <span class="formula-op">·</span>
+            <span class="formula-var">d</span>
+            <span class="formula-op">·</span>
+            <span class="formula-var">cos(θ)</span>
+          </div>
+          <div class="units-row">
+            <div class="unit-tag">F <span>fuerza · N</span></div>
+            <div class="unit-tag">d <span>distancia · m</span></div>
+            <div class="unit-tag">θ <span>ángulo · °</span></div>
+            <div class="unit-tag result-unit">W <span>trabajo · J</span></div>
+          </div>
+        </div>
+        <div class="section-calc">
+          <div class="field">
+            <label for="trab-f">Fuerza aplicada <em>F</em></label>
+            <div class="input-wrap">
+              <input type="number" id="trab-f" placeholder="newtons" step="any"/>
+              <span class="input-unit">N</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="trab-d">Distancia recorrida <em>d</em></label>
+            <div class="input-wrap">
+              <input type="number" id="trab-d" placeholder="metros" step="any"/>
+              <span class="input-unit">m</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="trab-theta">Ángulo entre fuerza y desplazamiento <em>θ</em></label>
+            <div class="input-wrap">
+              <input type="number" id="trab-theta" placeholder="grados (0–360)" step="any"/>
+              <span class="input-unit">°</span>
+            </div>
+          </div>
+          <button class="btn-run" onclick="calcTrabajo()">
+            <span class="btn-text">Calcular trabajo</span>
+            <span class="btn-arrow">→</span>
+          </button>
+          <div class="result-zone" id="res-trabajo"></div>
+        </div>
+      </div>
+      <div class="section-divider"></div>
+    </section>
+
+    <!-- 05 ENERGÍA CINÉTICA -->
+    <section class="calc-section" id="sec-cinetica">
+      <div class="section-index">05</div>
+      <div class="section-inner">
+        <div class="section-meta">
+          <h2 class="section-title">¿Cuánta energía lleva un cuerpo por su movimiento?</h2>
+          <p class="section-desc">La energía cinética es la energía almacenada en un cuerpo en movimiento. Crece con el cuadrado de la velocidad, por eso duplicar la velocidad cuadruplica la energía.</p>
+          <div class="formula-display">
+            <span class="formula-var accent">K</span>
+            <span class="formula-eq">=</span>
+            <span class="formula-frac-inline">½</span>
+            <span class="formula-op">·</span>
+            <span class="formula-var">m</span>
+            <span class="formula-op">·</span>
+            <span class="formula-var">v²</span>
+          </div>
+          <div class="units-row">
+            <div class="unit-tag">m <span>masa · kg</span></div>
+            <div class="unit-tag">v <span>velocidad · m/s</span></div>
+            <div class="unit-tag result-unit">K <span>energía cinética · J</span></div>
+          </div>
+        </div>
+        <div class="section-calc">
+          <div class="field">
+            <label for="ec-m">Masa del cuerpo <em>m</em></label>
+            <div class="input-wrap">
+              <input type="number" id="ec-m" placeholder="kilogramos" step="any"/>
+              <span class="input-unit">kg</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="ec-v">Velocidad del cuerpo <em>v</em></label>
+            <div class="input-wrap">
+              <input type="number" id="ec-v" placeholder="m/s" step="any"/>
+              <span class="input-unit">m/s</span>
+            </div>
+          </div>
+          <button class="btn-run" onclick="calcEnergiaCinetica()">
+            <span class="btn-text">Calcular energía cinética</span>
+            <span class="btn-arrow">→</span>
+          </button>
+          <div class="result-zone" id="res-ec"></div>
+        </div>
+      </div>
+      <div class="section-divider"></div>
+    </section>
+
+    <!-- 06 ENERGÍA POTENCIAL GRAVITATORIA -->
+    <section class="calc-section" id="sec-potencial">
+      <div class="section-index">06</div>
+      <div class="section-inner">
+        <div class="section-meta">
+          <h2 class="section-title">¿Cuánta energía acumula un cuerpo por su altura?</h2>
+          <p class="section-desc">La energía potencial gravitatoria depende de la masa, la gravedad del lugar y la altura sobre un nivel de referencia.</p>
+          <div class="formula-display">
+            <span class="formula-var accent">U</span>
+            <span class="formula-eq">=</span>
+            <span class="formula-var">m</span>
+            <span class="formula-op">·</span>
+            <span class="formula-var">g</span>
+            <span class="formula-op">·</span>
+            <span class="formula-var">h</span>
+          </div>
+          <div class="units-row">
+            <div class="unit-tag">m <span>masa · kg</span></div>
+            <div class="unit-tag">g <span>gravedad · m/s²</span></div>
+            <div class="unit-tag">h <span>altura · m</span></div>
+            <div class="unit-tag result-unit">U <span>energía potencial · J</span></div>
+          </div>
+        </div>
+        <div class="section-calc">
+          <div class="field">
+            <label for="ep-m">Masa del cuerpo <em>m</em></label>
+            <div class="input-wrap">
+              <input type="number" id="ep-m" placeholder="kilogramos" step="any"/>
+              <span class="input-unit">kg</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="ep-g">Gravedad local <em>g</em></label>
+            <div class="input-wrap">
+              <input type="number" id="ep-g" value="9.8" step="any"/>
+              <span class="input-unit">m/s²</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="ep-h">Altura sobre referencia <em>h</em></label>
+            <div class="input-wrap">
+              <input type="number" id="ep-h" placeholder="metros" step="any"/>
+              <span class="input-unit">m</span>
+            </div>
+          </div>
+          <button class="btn-run" onclick="calcEnergiaPotencial()">
+            <span class="btn-text">Calcular energía potencial</span>
+            <span class="btn-arrow">→</span>
+          </button>
+          <div class="result-zone" id="res-ep"></div>
+        </div>
+      </div>
+      <div class="section-divider"></div>
+    </section>
+
+    <!-- 07 DENSIDAD -->
+    <section class="calc-section" id="sec-densidad">
+      <div class="section-index">07</div>
+      <div class="section-inner">
+        <div class="section-meta">
+          <h2 class="section-title">¿Cuánta masa concentra un material por unidad de volumen?</h2>
+          <p class="section-desc">La densidad indica qué tan compacta es una sustancia. El oro es casi 20 veces más denso que el agua; el corcho, menos.</p>
+          <div class="formula-display">
+            <span class="formula-var accent">ρ</span>
+            <span class="formula-eq">=</span>
+            <div class="formula-fraction">
+              <span class="formula-var">m</span>
+              <span class="formula-bar"></span>
+              <span class="formula-var">V</span>
+            </div>
+          </div>
+          <div class="units-row">
+            <div class="unit-tag">m <span>masa · kg</span></div>
+            <div class="unit-tag">V <span>volumen · m³</span></div>
+            <div class="unit-tag result-unit">ρ <span>densidad · kg/m³</span></div>
+          </div>
+        </div>
+        <div class="section-calc">
+          <div class="field">
+            <label for="den-m">Masa de la muestra <em>m</em></label>
+            <div class="input-wrap">
+              <input type="number" id="den-m" placeholder="kilogramos" step="any"/>
+              <span class="input-unit">kg</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="den-v">Volumen de la muestra <em>V</em></label>
+            <div class="input-wrap">
+              <input type="number" id="den-v" placeholder="m³" step="any"/>
+              <span class="input-unit">m³</span>
+            </div>
+          </div>
+          <button class="btn-run" onclick="calcDensidad()">
+            <span class="btn-text">Calcular densidad</span>
+            <span class="btn-arrow">→</span>
+          </button>
+          <div class="result-zone" id="res-densidad"></div>
+        </div>
+      </div>
+      <div class="section-divider"></div>
+    </section>
+
+    <!-- 08 PRESIÓN -->
+    <section class="calc-section" id="sec-presion">
+      <div class="section-index">08</div>
+      <div class="section-inner">
+        <div class="section-meta">
+          <h2 class="section-title">¿Cuánta fuerza se ejerce sobre cada unidad de superficie?</h2>
+          <p class="section-desc">La presión mide la concentración de fuerza sobre un área. El mismo peso distribuido en mayor área genera menor presión.</p>
+          <div class="formula-display">
+            <span class="formula-var accent">P</span>
+            <span class="formula-eq">=</span>
+            <div class="formula-fraction">
+              <span class="formula-var">F</span>
+              <span class="formula-bar"></span>
+              <span class="formula-var">A</span>
+            </div>
+          </div>
+          <div class="units-row">
+            <div class="unit-tag">F <span>fuerza · N</span></div>
+            <div class="unit-tag">A <span>área · m²</span></div>
+            <div class="unit-tag result-unit">P <span>presión · Pa</span></div>
+          </div>
+        </div>
+        <div class="section-calc">
+          <div class="field">
+            <label for="pre-f">Fuerza perpendicular <em>F</em></label>
+            <div class="input-wrap">
+              <input type="number" id="pre-f" placeholder="newtons" step="any"/>
+              <span class="input-unit">N</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="pre-a">Área de contacto <em>A</em></label>
+            <div class="input-wrap">
+              <input type="number" id="pre-a" placeholder="m²" step="any"/>
+              <span class="input-unit">m²</span>
+            </div>
+          </div>
+          <button class="btn-run" onclick="calcPresion()">
+            <span class="btn-text">Calcular presión</span>
+            <span class="btn-arrow">→</span>
+          </button>
+          <div class="result-zone" id="res-presion"></div>
+        </div>
+      </div>
+      <div class="section-divider"></div>
+    </section>
+
+    <!-- 09 CARGA ELÉCTRICA -->
+    <section class="calc-section" id="sec-carga">
+      <div class="section-index">09</div>
+      <div class="section-inner">
+        <div class="section-meta">
+          <h2 class="section-title">¿Cuánta carga eléctrica transporta una corriente en el tiempo?</h2>
+          <p class="section-desc">La carga eléctrica total que fluye por un conductor es el producto de la intensidad de la corriente por el tiempo que circula.</p>
+          <div class="formula-display">
+            <span class="formula-var accent">q</span>
+            <span class="formula-eq">=</span>
+            <span class="formula-var">I</span>
+            <span class="formula-op">·</span>
+            <span class="formula-var">t</span>
+          </div>
+          <div class="units-row">
+            <div class="unit-tag">I <span>corriente · A</span></div>
+            <div class="unit-tag">t <span>tiempo · s</span></div>
+            <div class="unit-tag result-unit">q <span>carga · C</span></div>
+          </div>
+        </div>
+        <div class="section-calc">
+          <div class="field">
+            <label for="car-i">Intensidad de corriente <em>I</em></label>
+            <div class="input-wrap">
+              <input type="number" id="car-i" placeholder="amperios" step="any"/>
+              <span class="input-unit">A</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="car-t">Tiempo de circulación <em>t</em></label>
+            <div class="input-wrap">
+              <input type="number" id="car-t" placeholder="segundos" step="any"/>
+              <span class="input-unit">s</span>
+            </div>
+          </div>
+          <button class="btn-run" onclick="calcCarga()">
+            <span class="btn-text">Calcular carga eléctrica</span>
+            <span class="btn-arrow">→</span>
+          </button>
+          <div class="result-zone" id="res-carga"></div>
+        </div>
+      </div>
+      <div class="section-divider"></div>
+    </section>
+
+    <!-- 10 LEY DE OHM -->
+    <section class="calc-section" id="sec-ohm">
+      <div class="section-index">10</div>
+      <div class="section-inner">
+        <div class="section-meta">
+          <h2 class="section-title">¿Cuál es la tensión en un circuito resistivo?</h2>
+          <p class="section-desc">La Ley de Ohm establece que la tensión en un conductor es directamente proporcional a la corriente y a la resistencia del material.</p>
+          <div class="formula-display">
+            <span class="formula-var accent">V</span>
+            <span class="formula-eq">=</span>
+            <span class="formula-var">I</span>
+            <span class="formula-op">·</span>
+            <span class="formula-var">R</span>
+          </div>
+          <div class="units-row">
+            <div class="unit-tag">I <span>corriente · A</span></div>
+            <div class="unit-tag">R <span>resistencia · Ω</span></div>
+            <div class="unit-tag result-unit">V <span>tensión · V</span></div>
+          </div>
+        </div>
+        <div class="section-calc">
+          <div class="field">
+            <label for="ohm-i">Intensidad de corriente <em>I</em></label>
+            <div class="input-wrap">
+              <input type="number" id="ohm-i" placeholder="amperios" step="any"/>
+              <span class="input-unit">A</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="ohm-r">Resistencia eléctrica <em>R</em></label>
+            <div class="input-wrap">
+              <input type="number" id="ohm-r" placeholder="ohmios" step="any"/>
+              <span class="input-unit">Ω</span>
+            </div>
+          </div>
+          <button class="btn-run" onclick="calcOhm()">
+            <span class="btn-text">Calcular tensión</span>
+            <span class="btn-arrow">→</span>
+          </button>
+          <div class="result-zone" id="res-ohm"></div>
+        </div>
+      </div>
+      <div class="section-divider"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Samuel David Rodriguez Rodriguez</span>
+      <span class="footer-sep">—</span>
+      <span>Magnitudes Físicas</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
