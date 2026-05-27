@@ -55,18 +55,9 @@ calculadora-fisica-samuel-rodriguez/
 ---
 
 ##  Instrucciones para Ejecutar
-
-### Opción 1 — Abrir directamente (recomendada)
-1. Descarga o clona el repositorio:
-   ```bash
-   git clone https://github.com/tu-usuario/calculadora-fisica-samuel-rodriguez.git
-   ```
+1. Descarga 
 2. Abre el archivo `index.html` con cualquier navegador moderno (Chrome, Firefox, Edge).
 3. ¡Listo! No se requiere servidor ni instalación adicional.
-
-### Opción 2 — Servidor local con VS Code
-1. Instala la extensión **Live Server** en Visual Studio Code.
-2. Clic derecho sobre `index.html` → **"Open with Live Server"**.
 
 ---
 
@@ -88,4 +79,4 @@ calculadora-fisica-samuel-rodriguez/
 
 ---
 
-*Calculadora de Magnitudes Físicas · Samuel David Rodriguez Rodriguez · 2025*
+*Calculadora de Magnitudes Físicas · Samuel David Rodriguez Rodriguez · 2026*
