@@ -5,7 +5,7 @@
 
 ---
 
-## 👤 Datos del Estudiante
+##  Datos del Estudiante
 
 | Campo       | Detalle               |
 |-------------|-----------------------|
@@ -15,7 +15,7 @@
 
 ---
 
-## 📋 Descripción del Proyecto
+## Descripción del Proyecto
 
 Calculadora web interactiva que implementa **10 operaciones físicas fundamentales** usando HTML, CSS y JavaScript puros (sin librerías externas).
 
@@ -42,7 +42,7 @@ Cada operación cuenta con:
 
 ---
 
-## 🗂 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```
 calculadora-fisica-samuel-rodriguez/
@@ -54,7 +54,7 @@ calculadora-fisica-samuel-rodriguez/
 
 ---
 
-## 🚀 Instrucciones para Ejecutar
+##  Instrucciones para Ejecutar
 
 ### Opción 1 — Abrir directamente (recomendada)
 1. Descarga o clona el repositorio:
@@ -70,7 +70,7 @@ calculadora-fisica-samuel-rodriguez/
 
 ---
 
-## ✅ Validaciones incluidas
+##  Validaciones incluidas
 
 - **Campo vacío:** Muestra aviso si algún campo está sin rellenar.
 - **División por cero:** Detecta denominadores = 0 (tiempo, volumen, área, etc.).
@@ -80,7 +80,7 @@ calculadora-fisica-samuel-rodriguez/
 
 ---
 
-## 🛠 Tecnologías Utilizadas
+##  Tecnologías Utilizadas
 
 - **HTML5** — Estructura semántica
 - **CSS3** — Variables, Grid, animaciones, diseño responsive
